@@ -55,9 +55,9 @@ Route.post('logout', 'useController.logout')
 
 //crud del iony
 Route.get('/colorburger/tabla', 'ColorburgerController.index')
-Route.post('/colorburger/nuevo', 'ColorburgerController.store').middleware('auth');
-Route.put('/colorburger/editar/:id', 'ColorburgerController.update').middleware('auth');
-Route.delete('/colorburger/eliminar/:id', 'ColorburgerController.destroy').middleware('auth');
+Route.post('/colorburger/nuevo', 'ColorburgerController.store')/*.middleware('auth')*/;
+Route.put('/colorburger/editar/:id', 'ColorburgerController.update')/*.middleware('auth')*/;
+Route.delete('/colorburger/eliminar/:id', 'ColorburgerController.destroy')/*.middleware('auth')*/;
 
 //CRUD IOVANNA
 Route.group(function () {
