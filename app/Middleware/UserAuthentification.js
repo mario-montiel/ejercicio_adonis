@@ -15,15 +15,11 @@ class UserAuthentification {
     try {
       // console.log(auth)
       // const user = await auth.getUser();
-      // console.log(auth.check())
       console.log(await auth.getUser())
-      console.log('aqui')
-      // console.log(user)
       console.log('ya termino')
     } catch (error) {
       console.log(error)
     }
-    console.log(request.all())
     // await next()
   }
 }

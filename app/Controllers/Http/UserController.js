@@ -49,9 +49,6 @@ class UserController {
     }
 
     async addUserPost ({request, view, auth}){
-        console.log('crear1')
-        await auth.getUser()
-        console.log('crear2')
         try {
             const user_name = request.input('name')
             const user_email = request.input('email')
