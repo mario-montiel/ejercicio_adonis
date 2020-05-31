@@ -1,10 +1,10 @@
 'use strict'
-const User = use('App/Models/Pruebon/User')
+const User = use('App/Models/User')
 const Database = use('Database')
 const Hash = use('Hash')
 
 class UserController {
-    async login ({request, auth, response, redirect}){
+    async login ({request, auth}){
         try {
             const { email, password } = request.all()
             const query = await Database
@@ -13,43 +13,42 @@ class UserController {
                 .where('email', email)
                 .first()
 
-            const query_id = await Database
-                .select('id')
-                .from('users')
-                .where('email', email)
-                .first()
-
-            if(Hash.verify(password, query)){
+            if (query){
                 if (await auth.attempt(email, password)) {
                     let user = await User.findBy('email', email)
-                    let token = await auth.generate(user)
-        
-                    Object.assign(user, token)
+                    const token = await auth
+                        .withRefreshToken()
+                        .attempt(email, password)
+                    const username = Object.assign({user: user.$attributes.name, token: token})
                     if (user){
-                        return user
+                        return username
                     }
-                    return "NELSON"
+                    return {message:"NELSON"}
                   }
-            }
-            else{
-                console.log('Nelson')
+                else{
+                    console.log('Nelson')
+                    return {message: 'No se encontró ningun usuario con esos datos'}
+                }
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    async logout ({request, response, view}){
+    async logout ({request, response, view, auth}){
         try {
-            session.flashAll()
-            console.log(session.get('user'))
+            console.log('logout1')
+            console.log(auth)
+            console.log('logout2')
+            await auth.logout()
+            console.log('logoutFinal')
+            // return 'Sesión cerrada';
         } catch (error) {
             console.log(error)
         }
     }
 
-    async addUserPost ({request, view}){
-        console.log(request)
+    async addUserPost ({request, view, auth}){
         try {
             const user_name = request.input('name')
             const user_email = request.input('email')
