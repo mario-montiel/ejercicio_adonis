@@ -45,12 +45,10 @@ Route.get('/users', async (session) => {
 // AUTH JWT
 // Route.on('/login').render('login/login').middleware('auth') EXAMPLE TO MIDDLEWARE
 Route.post('/authJWT', 'userController.login')
-Route.group( () => {
-  Route.post('/add-user-post', 'userController.addUserPost')
-  Route.post('/update-user/:id', 'userController.updUser')
-  Route.post('/delete-user/:id', 'userController.deleteUser')
-  Route.post('logout', 'userController.logout')
-})
+Route.post('/add-user-post', 'userController.addUserPost')
+Route.post('/update-user/:id', 'userController.updUser')
+Route.post('/delete-user/:id', 'userController.deleteUser')
+Route.post('logout', 'userController.logout')
 
 //crud del iony
 Route.get('/colorburger/tabla', 'ColorburgerController.index')
