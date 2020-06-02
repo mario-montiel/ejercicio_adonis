@@ -45,7 +45,7 @@ Route.get('/users', async (session) => {
 // AUTH JWT
 // Route.on('/login').render('login/login').middleware('auth') EXAMPLE TO MIDDLEWARE
 Route.post('/authJWT', 'userController.login')
-Route.group( () => {
+Route.group(() => {
   Route.post('/add-user-post', 'userController.addUserPost')
   Route.post('/update-user/:id', 'userController.updUser')
   Route.post('/delete-user/:id', 'userController.deleteUser')
@@ -54,9 +54,9 @@ Route.group( () => {
 
 //crud del iony
 Route.get('/colorburger/tabla', 'ColorburgerController.index')
-Route.post('/colorburger/nuevo', 'ColorburgerController.store')/*.middleware('auth')*/;
-Route.put('/colorburger/editar/:id', 'ColorburgerController.update')/*.middleware('auth')*/;
-Route.delete('/colorburger/eliminar/:id', 'ColorburgerController.destroy')/*.middleware('auth')*/;
+Route.post('/colorburger/nuevo', 'ColorburgerController.store') /*.middleware('auth')*/ ;
+Route.put('/colorburger/editar/:id', 'ColorburgerController.update') /*.middleware('auth')*/ ;
+Route.delete('/colorburger/eliminar/:id', 'ColorburgerController.destroy') /*.middleware('auth')*/ ;
 
 //CRUD IOVANNA
 Route.group(function () {
@@ -64,7 +64,7 @@ Route.group(function () {
   Route.post('users/login', 'UserController.login');
   Route.post('people/add', 'PersonController.store');
   Route.get('index', 'PersonController.index');*/
-  Route.get('/dogs', 'DogController.index').middleware('auth');
+  Route.get('/dogs', 'DogController.index')/*.middleware('auth')*/;
   Route.post('user/dog', 'DogController.create') /*.middleware('auth')*/ ;
   Route.delete('dog/:id', 'DogController.destroy') /*.middleware('auth')*/
   Route.patch('dog/edit/:id', 'DogController.update') /*.middleware('auth')*/

@@ -3,11 +3,17 @@ const Dog = use('App/Models/Dog');
 const AuthorizationServices = use('App/Services/AuthorizationServices')
 class DogController {
   async index({
-    auth
+    auth,
+    request,
+    response,
+    view
   }) {
-    const user = await auth.getUser();
-    console.log(user.id);
-    return await user.dogs().fetch();
+    //const user = await auth.getUser();
+    //console.log(user.id);
+    //return await user.dogs().fetch();
+    let userdog = await Dog.query().fetch()
+    return response.json(userdog)
+    header('Access-Control-Allow-Origin: *');
   }
   async create({
     auth,
