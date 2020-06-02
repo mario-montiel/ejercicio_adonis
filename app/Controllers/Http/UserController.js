@@ -6,6 +6,7 @@ const Hash = use('Hash')
 class UserController {
     async login ({request, auth}){
         try {
+            console.log(request);
             const { email, password } = request.all()
             const query = await Database
                 .select('password')
@@ -23,11 +24,11 @@ class UserController {
                     if (user){
                         return username
                     }
-                    return {message:"NELSON"}
+                    return "NELSON"
                   }
                 else{
                     console.log('Nelson')
-                    return {message: 'No se encontró ningun usuario con esos datos'}
+                    return 'No se encontró ningun usuario con esos datos'
                 }
             }
         } catch (error) {

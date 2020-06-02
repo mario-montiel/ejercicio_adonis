@@ -52,6 +52,7 @@ Route.group(() => {
   Route.post('logout', 'userController.logout')
 })
 
+
 //crud del iony
 Route.get('/colorburger/tabla', 'ColorburgerController.index')
 Route.post('/colorburger/nuevo', 'ColorburgerController.store') /*.middleware('auth')*/ ;
