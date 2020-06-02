@@ -5,8 +5,9 @@ const Hash = use('Hash')
 
 class UserController {
     async login ({request, auth}){
+        console.log('hola')
         try {
-            console.log(request);
+            console.log('entro')
             const { email, password } = request.all()
             const query = await Database
                 .select('password')
