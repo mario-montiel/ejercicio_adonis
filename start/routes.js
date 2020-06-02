@@ -1,5 +1,5 @@
 'use strict'
-const User = use('App/Models/Pruebon/User')
+const User = use('App/Models/User')
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +45,18 @@ Route.get('/users', async (session) => {
 // AUTH JWT
 // Route.on('/login').render('login/login').middleware('auth') EXAMPLE TO MIDDLEWARE
 Route.post('/authJWT', 'userController.login')
+
+// CREATE USER
 Route.post('/add-user-post', 'userController.addUserPost')
+
+// UPDATE USER
 Route.post('/update-user/:id', 'userController.updUser')
+
+// DELETE USER
 Route.post('/delete-user/:id', 'userController.deleteUser')
-Route.post('logout', 'userController.logout')
+
+// LOGOUT
+Route.post('logout', 'useController.logout')
 
 //crud del iony
 Route.get('/colorburger/tabla', 'ColorburgerController.index')
