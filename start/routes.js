@@ -56,7 +56,7 @@ Route.post('/delete-user/:id', 'userController.deleteUser')
 
 // LOGOUT
 Route.post('logout', 'useController.logout')
->>>>>>> 6328aad887ede2f21507e457b42006c1421ca687
+
 
 //crud del iony
 Route.get('/colorburger/tabla', 'ColorburgerController.index')
@@ -67,10 +67,9 @@ Route.delete('/colorburger/eliminar/:id', 'ColorburgerController.destroy') /*.mi
 //CRUD IOVANNA
 Route.group(function () {
   /*Route.post('users/register', 'UserController.store');
-  Route.post('users/login', 'UserController.login');
-  Route.post('people/add', 'PersonController.store');
+  Route.post('users/login', 'UsonController.store');
   Route.get('index', 'PersonController.index');*/
-  Route.get('/dogs', 'DogController.index')/*.middleware('auth')*/;
+  Route.get('/dogs', 'DogController.index') /*.middleware('auth')*/ ;
   Route.post('user/dog', 'DogController.create') /*.middleware('auth')*/ ;
   Route.delete('dog/:id', 'DogController.destroy') /*.middleware('auth')*/
   Route.patch('dog/edit/:id', 'DogController.update') /*.middleware('auth')*/

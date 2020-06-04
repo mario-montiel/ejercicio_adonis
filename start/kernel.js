@@ -15,10 +15,6 @@ const Server = use('Server')
 const globalMiddleware = [
   'Adonis/Middleware/BodyParser',
   'App/Middleware/ConvertEmptyStringsToNull'
-<<<<<<< HEAD
-=======
-  // 'Adonis/Middleware/Session'
->>>>>>> 6328aad887ede2f21507e457b42006c1421ca687
 ]
 
 /*
