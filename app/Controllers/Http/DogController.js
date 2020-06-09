@@ -1,18 +1,28 @@
 'use strict'
 const Dog = use('App/Models/Dog');
+//const User = use('App/Models/User ');
 const AuthorizationServices = use('App/Services/AuthorizationServices')
+const Database = use('Database')
 class DogController {
   async index({
-    auth,
+    /*auth,
     request,
     response,
-    view
+    view*/
+    response
   }) {
     //const user = await auth.getUser();
-    //console.log(user.id);
+    //console.log("user", user);
     //return await user.dogs().fetch();
-    let userdog = await Dog.query().fetch()
-    return response.json(userdog)
+    //console.log(query);
+
+    /*let userdog = await Dog.query().innerJoin('users', 'users.id', 'dogs.user_id').fetch();
+    console.log(response.json(userdog))
+    return response.json(userdog);*/
+    return await Database.select('users.name as Propietario', 'dogs.name', 'dogs.nickname', 'dogs.age').from('dogs')
+      .innerJoin('users', 'users.id', 'dogs.user_id')
+
+    //return response.json(dog);
     header('Access-Control-Allow-Origin: *');
   }
   async create({
@@ -33,6 +43,21 @@ class DogController {
     });
     await user.dogs().save(dog);
     return dog;
+  }
+  async store({
+    request,
+    response
+  }) {
+    const name = request.input('name')
+    const nickname = request.input('nickname')
+    const age = request.input('age')
+
+    const dog = new Dog()
+    dog.name = name
+    dog.nickname =
+      dog.age = age
+    await dog.save()
+    return response.json(dog)
   }
   async destroy({
     auth,

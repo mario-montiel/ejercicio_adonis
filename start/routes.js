@@ -70,7 +70,7 @@ Route.group(function () {
   Route.post('users/login', 'UsonController.store');
   Route.get('index', 'PersonController.index');*/
   Route.get('/dogs', 'DogController.index') /*.middleware('auth')*/ ;
-  Route.post('user/dog', 'DogController.create') /*.middleware('auth')*/ ;
+  Route.post('user/dog', 'DogController.store') /*Route.post('user/dog', 'DogController.create').middleware('auth')*/ ;
   Route.delete('dog/:id', 'DogController.destroy') /*.middleware('auth')*/
   Route.patch('dog/edit/:id', 'DogController.update') /*.middleware('auth')*/
 }).prefix('api/test');

@@ -10,7 +10,7 @@ class UserController {
   }) {
     console.log('hola')
     try {
-      console.log('entro')
+      console.log('entro') 
       const {
         email,
         password
